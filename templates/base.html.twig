@@ -14,10 +14,8 @@
         {% endblock %}
     </head>
     <body>
-        <header class="w-full p-2 flex items-center gap-4 bg-lime-300">
-            <img src="https://picsum.photos/400/200" class="h-10" alt="Logo de XXXXX"></img>
-            <h1 class="text-2xl"> {{project_name}} - {% block page_title %}Home{% endblock %} </h1>
-        </header>
+        {% include 'header.html.twig' %}
         {% block body %}{% endblock %}
+        {% include 'footer.html.twig' %}
     </body>
 </html>
