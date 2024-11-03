@@ -12,6 +12,7 @@ class HomeController extends AbstractController {
     #[Route("/", name: "home")]
     function index (Request $request) : Response {
          return $this->render('home/index.html.twig', [
+            'controller_name' => "Home",
             'project_name' => "PinFX Tracker"
          ]);
     }
