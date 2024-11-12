@@ -1,8 +1,13 @@
 # TODO
 
 ## Main templates
- + Footer
-    + Useful Links
-    + Legal
- + Header
-    + Nav
+ + Main elements
+   + Footer
+      + Useful Links
+      + Legal
+   + Header
+      + Nav
+
+ + Pages
+   + Main 
+      + Better style
