@@ -11,3 +11,4 @@
  + Pages
    + Main 
       + Better style
+      + Images
