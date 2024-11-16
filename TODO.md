@@ -7,6 +7,7 @@
       + Legal
    + Header
       + Nav
+      + Logo
 
  + Pages
    + Main 
