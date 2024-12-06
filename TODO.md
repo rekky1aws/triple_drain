@@ -8,6 +8,8 @@
    + Header
       + Nav
       + Logo
+      + Language Switcher
+
 
  + Pages
    + Main 
