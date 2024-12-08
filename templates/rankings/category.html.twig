@@ -1,3 +1,8 @@
-{# Title is Category Name #}
+{% extends 'base.html.twig' %}
+
+{% block title %} {{controller_name}} : {# Title is Category Name #} {% endblock %}
+
+{% block body %}
 {# List all player in decroissant points order in the category (1st player with most points and last player with less points) #}
 {# List all tables from the category with links to those table rankings  #}
+{% endblock %}
