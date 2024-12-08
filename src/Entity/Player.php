@@ -19,7 +19,7 @@ class Player
     private ?string $pseudo = null;
 
     #[ORM\Column]
-    private ?bool $has_cheated = null;
+    private ?bool $has_cheated = false;
 
     #[ORM\ManyToOne(inversedBy: 'players')]
     private ?Team $team = null;
