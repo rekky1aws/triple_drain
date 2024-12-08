@@ -18,6 +18,7 @@
 
  + Database
    + Functions
+      + Insert table scores via csv
       + Calculate TOP 50 points
       + Calculate TOP 100 points
    + Fixtures
