@@ -15,6 +15,16 @@
       + Better style
       + Images
       + Animations
+   + Rankings
+      + Global
+         + Controller
+         + View
+      + Table
+         + Controller
+         + View
+      + Category
+         + Controller
+         + View
 
  + Subdomain
    + Admin
