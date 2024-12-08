@@ -16,9 +16,14 @@
       + Images
       + Animations
 
+ + Subdomain
+   + Admin
+      + Login 
+      + Page to insert table scores via CSV
+
  + Database
    + Functions
-      + Insert table scores via csv
+      + Insert table scores via CSV
       + Calculate TOP 50 points
       + Calculate TOP 100 points
    + Fixtures
