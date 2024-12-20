@@ -4,6 +4,7 @@ namespace App\DataFixtures;
 
 use App\Entity\Player;
 use App\Entity\Team;
+use App\Entity\Category;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
 
@@ -12,6 +13,170 @@ class AppFixtures extends Fixture
     public function load(ObjectManager $manager): void
     {
         $faker = \Faker\Factory::create('fr_FR');
+
+        $tableData = [
+            "Pinball Wild Card" => [
+                "The Princess Bride Pinball",
+                "Goat Simulator Pinball"
+            ],
+            "Création Zen" => [
+                "Super League Football",
+                "Excalibur",
+                "Epic Quest",
+                "Wild West Rampage",
+                "Sorcerer's Lair",
+                "Verne's Mysterious Island",
+                "A Samurai Vengeance",
+                "Wrath of the Elder Gods",
+                "Grimm Tales",
+                "Curse of the Mummy",
+                "Pinball Noir",
+                "Sky Pirates: Treasures of the Clouds",
+                "Pahsa",
+                "Biolab",
+                "Rome",
+                "Secrets of the Deep",
+                "Son of Zeus",
+                "Adventure Land",
+                "Castle Storm"
+            ],
+            "Brace Yourself Games" => [
+                "Crypt of the NecroDancer Pinball"
+            ],
+            "Dreamworks Pinball" => [
+                "'DreamWorks Kung Fu Panda Pinball",
+                "DreamWorks How to Train Your Dragon Pinball",
+                "DreamWorks Trolls Pinball"
+            ],
+            "Game  Night Pinball" => [
+                "Exploding Kittens®: A Pinball Cat-astrophe",
+                "Gloomhaven™ Pinball",
+                "Terraforming Mars Pinball"
+            ],
+            "Gearbox Pinball" => [
+                "Brother in Arms®: Win the War Pinball",
+                "Borderlands®: Vault Hunter Pinball",
+                "Homeworld®: Journey to Hiigara Pinball"
+            ],
+            "Hasbro Pinball" => [
+                "MY LITTLE PONY Pinball"
+            ],
+            "Legendary" => [
+                "Pacific Rim Pinball",
+                "Godzilla vs, Kong Pinball",
+                "Godzilla Pinball",
+                "Kong Pinball"
+            ],
+            "Marvel Pinball" => [
+                "Marvel's Woman of Power: Champion",
+                "Marvel's Woman of Power: A-Force",
+                "Marvel's The Avengers",
+                "The Infinity Gauntlet",
+                "Fear Itself",
+                "World War Hulk",
+                "Marvel's Ant-Man",
+                "Marvel's Avengers: Age of Ultron",
+                "Guardian of the Galaxy",
+                "Venom",
+                "Deadpool",
+                "Civil War",
+                "Moon Knight",
+                "X-Men",
+                "Thor",
+                "Ghost Rider",
+                "Doctor Strange",
+                "Captain America",
+                "Fantastic Four",
+                "Wolverine",
+                "Blade",
+                "Spider-Man",
+                "Iron Man"
+            ],
+            "Nickelodeon" => [
+                "Garfield Pinball"
+            ],
+            "Paramount" => [
+                "World War Z Pinball"
+            ],
+            "Peanut's Pinball" => [
+                "A Charlie Brown Christmas Pinball",
+                "Peanuts' Snoopy Pinball"
+            ],
+            "Southpark Pinball" => [
+                "South Park: Super-Sweet Pinball",
+                "South Park: Butters' Very Own Pinball Game"
+            ],
+            "Star Trek Pinball" => [
+                "Star Trek Pinball: Discovery",
+                "Star Trek Pinball: Deep Space Nine",
+                "Star Trek: Kelvin Timeline"
+            ],
+            "Star Wars Pinball" => [
+                "Star Wars Pinball: Classic Collectibles",
+                "Star Wars Pinball: The Mandalorian",
+                "Star Wars Pinball: Calrissian Chronicles",
+                "Star Wars Pinball: Battle of Mimban",
+                "Star Wars Pinball: Solo",
+                "Star Wars Pinball: Ahch-To Island",
+                "Star Wars Pinball: The Last Jedi",
+                "Star Wars Pinball: Rogue One",
+                "Star Wars Pinball: Star Wars Rebels",
+                "Star Wars Pinball: Might of the First Order",
+                "Star Wars Pinball:The Force Awakens",
+                "Star Wars Pinball: Masters of the Force",
+                "Star Wars Pinball: Episode IV A New Hope",
+                "Star Wars Pinball: Droids",
+                "Star Wars Pinball: Han Solo",
+                "Star Wars Pinball: Starfighter Assault",
+                "Star Wars Pinball: Darth Vader",
+                "Star Wars Pinball: Episode VI Return of the Jedi",
+                "Star Wars Pinball: Boba Fett",
+                "Star Wars Pinball: The Clone Wars",
+                "Star Wars Pinball: Episode V The Empire Strikes Back"
+            ],
+            "Universal Pinball" => [
+                "Battlestar Galactica Pinball",
+                "Xena: Warrior Pricess Pinball",
+                "Knight Rider Pinball",
+                "Jurassic Park Pinball Mayhem",
+                "Jurassic World Pinball",
+                "Jurassic Park Pinball",
+                "Jaws Pinball",
+                "Back to the Future Pinball",
+                "E.T. Pinball"
+            ],
+            "Williams Pinball" => [
+                "Fish Tales",
+                "Star Trek: The Next Generation",
+                "Twilight Zone",
+                "The Addams Family",
+                "World Cup Soccer",
+                "Whirlwind",
+                "The Machine:Bride of Pin.bot",
+                "Swords of Fury",
+                "Indiana Jones: The Pinball Adventure",
+                "Dr.Dude and his Exellent Ray",
+                "Space Staiton",
+                "Funhouse",
+                "No Good Gofers®",
+                "Tales of the Arabian Nights",
+                "Cirqus Voltaire",
+                "Hurricane",
+                "Red and Ted's Road Show",
+                "White Water",
+                "Champion Pub",
+                "Safe Cracker",
+                "Theatre of Magic",
+                "The Party Zone",
+                "Black Rose",
+                "Attack from Mars",
+                "Junk Yard",
+                "The Getaway: High Speed II",
+                "Medieval Madness",
+                "The Creature From The Black Lagoon",
+                "Monster Bash"
+            ]
+        ];
         
         // Teams
         $teams = [];
@@ -27,6 +192,7 @@ class AppFixtures extends Fixture
         }
 
         // Players
+        $players = [];
         for ($i = 0;  $i < 20 ;  $i++) { 
             $firstname = $faker->firstName;
 
@@ -38,7 +204,23 @@ class AppFixtures extends Fixture
                 $player->setTeam($teams[$team_id]);
             }
 
+            array_push($players, $player);
+
             $manager->persist($player);
+        }
+
+        // Categories
+        $categories = [];
+
+        $categoryNames = array_keys($tableData);
+
+        for ($i = 0; $i < count($categoryNames); $i++) {
+            $category = new Category();
+            $category->setName($categoryNames[$i]);
+            
+            array_push($categories, $category);
+
+            $manager->persist($category);
         }
         
         $manager->flush();
