@@ -5,6 +5,7 @@ namespace App\DataFixtures;
 use App\Entity\Player;
 use App\Entity\Team;
 use App\Entity\Category;
+use App\Entity\Pinball;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
 
@@ -221,6 +222,20 @@ class AppFixtures extends Fixture
             array_push($categories, $category);
 
             $manager->persist($category);
+        }
+
+        // Pinballs
+        $pinballs = [];
+        for ($i = 0; $i < count($tableData); $i++) {
+            for ($j = 0; $j < count($tableData[$categoryNames[$i]]); $j++) {
+                $pinball = new Pinball();
+                $pinball->setName($tableData[$categoryNames[$i]][$j]);
+                $pinball->setCategory($categories[$i]);
+
+                array_push($pinballs, $pinball);
+
+                $manager->persist($pinball);
+            }
         }
         
         $manager->flush();
