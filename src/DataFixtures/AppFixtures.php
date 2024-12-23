@@ -6,6 +6,8 @@ use App\Entity\Player;
 use App\Entity\Team;
 use App\Entity\Category;
 use App\Entity\Pinball;
+use App\Entity\Score;
+
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
 
@@ -181,11 +183,11 @@ class AppFixtures extends Fixture
         
         // Teams
         $teams = [];
-        for ($i = 0; $i < 5; $i++) {
+        for ($i = 0; $i < 15; $i++) {
             $teamname = $faker->word();
             
             $team = new Team();
-            $team->setName("Team {$teamname}");
+            $team->setName("Team {$teamname}_{$i}");
             
             array_push($teams, $team);
 
@@ -194,13 +196,13 @@ class AppFixtures extends Fixture
 
         // Players
         $players = [];
-        for ($i = 0;  $i < 20 ;  $i++) { 
+        for ($i = 0;  $i < 400 ;  $i++) { 
             $firstname = $faker->firstName;
 
             $player = new Player();
             $player->setPseudo("{$firstname}_{$i}");
             
-            $team_id = rand(0, 15);
+            $team_id = rand(0, 50 * count($teams));
             if ($team_id < count($teams)) {
                 $player->setTeam($teams[$team_id]);
             }
@@ -237,7 +239,41 @@ class AppFixtures extends Fixture
                 $manager->persist($pinball);
             }
         }
+
+        // Scores
+        $scores = [];
+        $scoreTables = [];
+        for ($i = 0; $i < 5; $i++) {
+            do {
+                $pinInd = rand(0, count($pinballs));
+            } while (in_array($pinballs[$pinInd], $scoreTables));
+            array_push($scoreTables, $pinballs[$pinInd]);
+
+            $thisTablePlayers = [];
+            
+            $firstScore = rand(1000, 1000000000);
+
+            for ($j = 0; $j < 10; $j ++) {
+                do {
+                    $playerInd = rand(0, count($players));
+                } while (in_array($players[$playerInd], $thisTablePlayers));
+                // var_dump($thisTablePlayers);
+                array_push($thisTablePlayers, $players[$playerInd]);
+
+                $score = new Score();
+                $score->setPinball($pinballs[$pinInd]);
+                $score->setPlayer($players[$playerInd]);
+                $score->setScore(floor($firstScore + ((1 + (-0.1*$j)) * $firstScore)));
+                $score->setPosition($i+1);
+
+                array_push($scores, $score);
+
+                $manager->persist($score);
+            }
+        }
         
+        var_dump($scores);
+
         $manager->flush();
     }
 }
