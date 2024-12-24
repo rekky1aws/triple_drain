@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\PinballRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: PinballRepository::class)]
@@ -19,6 +21,18 @@ class Pinball
     #[ORM\ManyToOne(inversedBy: 'pinballs')]
     #[ORM\JoinColumn(nullable: false)]
     private ?Category $category = null;
+
+    /**
+     * @var Collection<int, Score>
+     */
+    #[ORM\OneToMany(targetEntity: Score::class, mappedBy: 'pinball')]
+    private Collection $yes;
+
+    public function __construct()
+    {
+        $this->player_id = new ArrayCollection();
+        $this->yes = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -45,6 +59,36 @@ class Pinball
     public function setCategory(?Category $category): static
     {
         $this->category = $category;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Score>
+     */
+    public function getScores(): Collection
+    {
+        return $this->scores;
+    }
+
+    public function addScore(Score $score): static
+    {
+        if (!$this->scores->contains($score)) {
+            $this->scores->add($score);
+            $ye->setPinball($this);
+        }
+
+        return $this;
+    }
+
+    public function removeScore(Score $score): static
+    {
+        if ($this->scores->removeElement($score)) {
+            // set the owning side to null (unless already changed)
+            if ($score->getPinball() === $this) {
+                $score->setPinball(null);
+            }
+        }
 
         return $this;
     }

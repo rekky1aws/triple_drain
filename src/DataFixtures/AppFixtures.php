@@ -243,7 +243,8 @@ class AppFixtures extends Fixture
         // Scores
         $scores = [];
         $scoreTables = [];
-        for ($i = 0; $i < 5; $i++) {
+
+        for ($i = 0; $i < 5; $i++) { // $i pinball tables
             do {
                 $pinInd = rand(0, count($pinballs));
             } while (in_array($pinballs[$pinInd], $scoreTables));
@@ -253,26 +254,26 @@ class AppFixtures extends Fixture
             
             $firstScore = rand(1000, 1000000000);
 
-            for ($j = 0; $j < 10; $j ++) {
+            for ($j = 0; $j < 100; $j ++) { // $j players
                 do {
-                    $playerInd = rand(0, count($players));
+                    $playerInd = rand(0, count($players) - 1);
                 } while (in_array($players[$playerInd], $thisTablePlayers));
-                // var_dump($thisTablePlayers);
                 array_push($thisTablePlayers, $players[$playerInd]);
 
+                $scoreValue = floor($firstScore + ((1 + (0.1*$j)) * $firstScore));
+                
                 $score = new Score();
                 $score->setPinball($pinballs[$pinInd]);
                 $score->setPlayer($players[$playerInd]);
-                $score->setScore(floor($firstScore + ((1 + (-0.1*$j)) * $firstScore)));
-                $score->setPosition($i+1);
+                $score->setValue($scoreValue);
+                $score->setPosition(100 - $j);
+                $score->setDate(\DateTime::createFromFormat('Y-m-d', date('Y-m-d')));
 
                 array_push($scores, $score);
 
                 $manager->persist($score);
             }
         }
-        
-        var_dump($scores);
 
         $manager->flush();
     }

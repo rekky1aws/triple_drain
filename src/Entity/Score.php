@@ -7,9 +7,6 @@ use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: ScoreRepository::class)]
-#[UniqueEntity(
-    fields: ['pinball', 'player', 'date']
-)]
 class Score
 {
     #[ORM\Id]
@@ -17,7 +14,7 @@ class Score
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\ManyToOne]
+    #[ORM\ManyToOne(inversedBy: 'yes')]
     #[ORM\JoinColumn(nullable: false)]
     private ?Pinball $pinball = null;
 
@@ -25,10 +22,10 @@ class Score
     #[ORM\JoinColumn(nullable: false)]
     private ?Player $player = null;
 
-    #[ORM\Column(type: Types::BIGINT)]
-    private ?string $score = null;
+    #[ORM\Column(name:"value", type:"bigint")]
+    private ?int $value = null;
 
-    #[ORM\Column]
+    #[ORM\Column(nullable: true)]
     private ?int $position = null;
 
     #[ORM\Column(nullable: true)]
@@ -69,14 +66,14 @@ class Score
         return $this;
     }
 
-    public function getScore(): ?string
+    public function getValue(): ?int
     {
-        return $this->score;
+        return $this->value;
     }
 
-    public function setScore(string $score): static
+    public function setValue(int $value): static
     {
-        $this->score = $score;
+        $this->value = $value;
 
         return $this;
     }
@@ -86,7 +83,7 @@ class Score
         return $this->position;
     }
 
-    public function setPosition(int $position): static
+    public function setPosition(?int $position): static
     {
         $this->position = $position;
 

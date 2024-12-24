@@ -89,7 +89,7 @@ class Player
     {
         if (!$this->scores->contains($score)) {
             $this->scores->add($score);
-            $score->addPlayer($this);
+            $score->setPlayer($this);
         }
 
         return $this;
@@ -98,7 +98,10 @@ class Player
     public function removeScore(Score $score): static
     {
         if ($this->scores->removeElement($score)) {
-            $score->removePlayer($this);
+            // set the owning side to null (unless already changed)
+            if ($score->getPlayer() === $this) {
+                $score->setPlayer(null);
+            }
         }
 
         return $this;
