@@ -89,8 +89,6 @@ class RankingsController extends AbstractController
             ]);
         }
 
-        dump($scores);
-
         return $this->render('rankings/table.html.twig', [
             'controller_name' => 'Rankings - '.$pinball_machine->getName(),
             'table' => $pinball_machine,
