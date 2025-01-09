@@ -64,8 +64,6 @@ class RankingsController extends AbstractController
     {
         $pinball_machines = $entityManager->getRepository(Pinball::class)->findAll();
 
-        dump($pinball_machines);
-
         return $this->render('rankings/tableSelection.html.twig', [
             'controller_name' => 'Table Selection',
             'tables' => $pinball_machines
