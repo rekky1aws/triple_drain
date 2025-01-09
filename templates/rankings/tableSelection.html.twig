@@ -4,9 +4,16 @@
 
 {% block body %}
 {# List all tables with links to table rankings #}
-<ul>
-  {% for table in tables %}
-  <li><a href="{{ path('app_rankings_table', {id: table.id}) }}">{{ table.name }}</a></li>
+<ul class="m-5 flex flex-col gap-5">
+  {% for category in categories %}
+    <li>
+      <span class="underline font-bold"> {{category.name}} </span>
+      <ul class="m-1"> 
+        {% for table in category.pinballs %}
+          <li class="my-1 mx-5"><a href="{{ path('app_rankings_table', {id: table.id}) }}">{{ table.name }}</a></li>
+        {% endfor %}
+      </ul>
+    </li>
   {% endfor %}
 </ul>
 {% endblock %}

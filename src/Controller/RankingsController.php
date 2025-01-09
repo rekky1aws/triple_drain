@@ -55,11 +55,11 @@ class RankingsController extends AbstractController
     #[Route('/rankings/table', name: 'app_rankings_table_selection')]
     public function tableSelection(EntityManagerInterface $entityManager): Response
     {
-        $pinball_machines = $entityManager->getRepository(Pinball::class)->findAll();
+        $categories = $entityManager->getRepository(Category::class)->findAll();
 
         return $this->render('rankings/tableSelection.html.twig', [
             'controller_name' => 'Table Selection',
-            'tables' => $pinball_machines
+            'categories' => $categories
         ]);
     }
 
