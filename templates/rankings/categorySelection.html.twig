@@ -4,4 +4,9 @@
 
 {% block body %}
 {# List all table categories with links to category rankings #}
+<ul>
+  {% for category in categories %}
+  <li><a href="{{ path('app_rankings_category', {id: category.id}) }}">{{ category.name }}</a></li>
+  {% endfor %}
+</ul>
 {% endblock %}

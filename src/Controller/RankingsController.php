@@ -4,7 +4,6 @@ namespace App\Controller;
 
 use App\Entity\Category;
 use App\Entity\Pinball;
-use App\Entity\Score;
 
 use Doctrine\ORM\EntityManagerInterface;
 
@@ -22,19 +21,6 @@ class RankingsController extends AbstractController
         ]);
     }
 
-    // DEBUG
-    #[Route('/rankings/test', name: 'app_rankings_test')]
-    public function test(EntityManagerInterface $entityManager): Response
-    {
-        $pinball_machines = $entityManager->getRepository(Pinball::class)->find(0);
-
-        var_dump($pinball_machines);
-
-        return $this->render('rankings/test.html.twig', [
-            'controller_name' => 'Rankings TEST',
-        ]);
-    }
-
     #[Route('/rankings/global', name: 'app_rankings_global')]
     public function global(): Response
     {
@@ -44,16 +30,23 @@ class RankingsController extends AbstractController
     }
 
     #[Route('/rankings/catgeory', name: 'app_rankings_category_selection')]
-    public function categorySelection(): Response
+    public function categorySelection(EntityManagerInterface $entityManager): Response
     {
+        $categories = $entityManager->getRepository(Category::class)->findAll();
+
+        dump($categories);
+
         return $this->render('rankings/categorySelection.html.twig', [
             'controller_name' => 'Category Selection',
+            'categories' => $categories
         ]);
     }
 
     #[Route('/rankings/catgeory/{id}', name: 'app_rankings_category')]
-    public function category(): Response
+    public function category(EntityManagerInterface $entityManager, int $id): Response
     {
+        $categories = $entityManager->getRepository(Category::class)->find($id);
+        
         return $this->render('rankings/category.html.twig', [
             'controller_name' => 'Category',
         ]);
