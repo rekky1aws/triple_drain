@@ -16,6 +16,19 @@ class PinballRepository extends ServiceEntityRepository
         parent::__construct($registry, Pinball::class);
     }
 
+    public function findAll (): array 
+    {
+        $entityManager = $this->getEntityManager();
+
+        $query = $entityManager->createQuery(
+         'SELECT p
+         FROM App\Entity\Pinball p
+         ORDER BY p.id ASC'
+        );
+
+        return $query->getResult();
+    }
+
     //    /**
     //     * @return Pinball[] Returns an array of Pinball objects
     //     */

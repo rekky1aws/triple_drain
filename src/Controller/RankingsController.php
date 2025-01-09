@@ -2,6 +2,12 @@
 
 namespace App\Controller;
 
+use App\Entity\Category;
+use App\Entity\Pinball;
+use App\Entity\Score;
+
+use Doctrine\ORM\EntityManagerInterface;
+
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
@@ -13,6 +19,19 @@ class RankingsController extends AbstractController
     {
         return $this->render('rankings/index.html.twig', [
             'controller_name' => 'Rankings',
+        ]);
+    }
+
+    // DEBUG
+    #[Route('/rankings/test', name: 'app_rankings_test')]
+    public function test(EntityManagerInterface $entityManager): Response
+    {
+        $pinball_machines = $entityManager->getRepository(Pinball::class)->find(0);
+
+        var_dump($pinball_machines);
+
+        return $this->render('rankings/test.html.twig', [
+            'controller_name' => 'Rankings TEST',
         ]);
     }
 
@@ -32,7 +51,7 @@ class RankingsController extends AbstractController
         ]);
     }
 
-    #[Route('/rankings/catgeory/{slug}', name: 'app_rankings_category')]
+    #[Route('/rankings/catgeory/{id}', name: 'app_rankings_category')]
     public function category(): Response
     {
         return $this->render('rankings/category.html.twig', [
@@ -41,18 +60,46 @@ class RankingsController extends AbstractController
     }
 
     #[Route('/rankings/table', name: 'app_rankings_table_selection')]
-    public function tableSelection(): Response
+    public function tableSelection(EntityManagerInterface $entityManager): Response
     {
+        $pinball_machines = $entityManager->getRepository(Pinball::class)->findAll();
+
+        dump($pinball_machines);
+
         return $this->render('rankings/tableSelection.html.twig', [
             'controller_name' => 'Table Selection',
+            'tables' => $pinball_machines
         ]);
     }
 
-    #[Route('/rankings/table/{slug}', name: 'app_rankings_table')]
-    public function table(): Response
+    #[Route('/rankings/table/{id}', name: 'app_rankings_table')]
+    public function tableId(EntityManagerInterface $entityManager, int $id): Response
     {
+        $pinball_machine = $entityManager->getRepository(Pinball::class)->find($id);
+        $scores = $entityManager->getRepository(Score::class)->findBy([
+            'pinball' => $pinball_machine,
+        ], [
+            'value' => 'DESC'
+        ]);
+
+        if (is_null($pinball_machine)) { // If table doesn't exist display error.
+            return $this->render('rankings/tableError.html.twig', [
+                'controller_name' => 'Table does not exist',
+                'table_id' => $id
+            ]);
+        }
+
+        if (empty($scores)) { // If this table doesn't have any score registered.
+            return $this->render('rankings/tableEmpty.html.twig', [
+                'controller_name' => 'Empty Table'
+            ]);
+        }
+
         return $this->render('rankings/table.html.twig', [
-            'controller_name' => 'Table',
+            'controller_name' => 'Rankings - '.$pinball_machine->getName(),
+            'table' => $pinball_machine,
+            'category' => $pinball_machine->getCategory(),
+            'scores' => $scores
         ]);
     }
 }

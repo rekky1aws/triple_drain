@@ -19,9 +19,6 @@
       + Global
          + Controller
          + View
-      + Table
-         + Controller
-         + View
       + Category
          + Controller
          + View

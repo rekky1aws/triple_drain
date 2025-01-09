@@ -4,6 +4,12 @@
 
 {% block body %}
 {# Sub-Title is Table's Category #}
+<h2> Category : <a href="{{ path('app_rankings_category', {id: category.id}) }}"> {{ category.name }} </a> </h2>
 {# List all player in decroissant points order for the table (1st player with most points and last player with less points) #}
+<ul>
+  {% for score in scores %}
+  <li><span> {{score.position}}</span> <span> {{score.player.pseudo}}</span> <span>{{ score.value }}</span></li>
+  {% endfor %}
+</ul>
 {# List all tables from the category with links to those table rankings  #}
 {% endblock %}
