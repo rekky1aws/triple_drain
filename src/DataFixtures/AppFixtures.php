@@ -149,6 +149,9 @@ class AppFixtures extends Fixture
                 "E.T. Pinball"
             ],
             "Williams Pinball" => [
+                "Earthshaker!",
+                "Banzai Run",
+                "Black Knight 2000",
                 "Fish Tales",
                 "Star Trek: The Next Generation",
                 "Twilight Zone",
@@ -177,7 +180,7 @@ class AppFixtures extends Fixture
                 "The Getaway: High Speed II",
                 "Medieval Madness",
                 "The Creature From The Black Lagoon",
-                "Monster Bash"
+                "Monster Bash",
             ]
         ];
         
