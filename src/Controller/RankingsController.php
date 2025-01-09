@@ -74,11 +74,7 @@ class RankingsController extends AbstractController
     public function tableId(EntityManagerInterface $entityManager, int $id): Response
     {
         $pinball_machine = $entityManager->getRepository(Pinball::class)->find($id);
-        $scores = $entityManager->getRepository(Score::class)->findBy([
-            'pinball' => $pinball_machine,
-        ], [
-            'value' => 'DESC'
-        ]);
+        $scores = $pinball_machine->getScores();
 
         if (is_null($pinball_machine)) { // If table doesn't exist display error.
             return $this->render('rankings/tableError.html.twig', [
@@ -92,6 +88,8 @@ class RankingsController extends AbstractController
                 'controller_name' => 'Empty Table'
             ]);
         }
+
+        dump($scores);
 
         return $this->render('rankings/table.html.twig', [
             'controller_name' => 'Rankings - '.$pinball_machine->getName(),
