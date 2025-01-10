@@ -32,7 +32,7 @@ class Pinball
     public function __construct()
     {
         $this->player_id = new ArrayCollection();
-        $this->yes = new ArrayCollection();
+        $this->scores = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -76,7 +76,7 @@ class Pinball
     {
         if (!$this->scores->contains($score)) {
             $this->scores->add($score);
-            $ye->setPinball($this);
+            $scores->setPinball($this);
         }
 
         return $this;
