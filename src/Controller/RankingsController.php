@@ -34,8 +34,6 @@ class RankingsController extends AbstractController
     {
         $categories = $entityManager->getRepository(Category::class)->findAll();
 
-        dump($categories);
-
         return $this->render('rankings/categorySelection.html.twig', [
             'controller_name' => 'Category Selection',
             'categories' => $categories
@@ -82,7 +80,7 @@ class RankingsController extends AbstractController
             ]);
         }
 
-        if (empty($scores->collection)) { // If this table doesn't have any score registered.
+        if (count($scores) == 0) { // If this table doesn't have any score registered.
             return $this->render('rankings/tableEmpty.html.twig', [
                 'controller_name' => 'Empty Table'
             ]);
