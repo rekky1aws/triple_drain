@@ -76,7 +76,7 @@ class RankingsController extends AbstractController
             ]);
         }
 
-        if (empty($scores)) { // If this table doesn't have any score registered.
+        if (empty($scores->collection)) { // If this table doesn't have any score registered.
             return $this->render('rankings/tableEmpty.html.twig', [
                 'controller_name' => 'Empty Table'
             ]);
