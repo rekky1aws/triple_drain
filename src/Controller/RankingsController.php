@@ -56,10 +56,16 @@ class RankingsController extends AbstractController
     public function tableSelection(EntityManagerInterface $entityManager): Response
     {
         $categories = $entityManager->getRepository(Category::class)->findAll();
+        $hideEmptyFlag = false;
+
+        if (array_key_exists("hideEmpty", $_GET)) {
+            $hideEmptyFlag = true;
+        }
 
         return $this->render('rankings/tableSelection.html.twig', [
             'controller_name' => 'Table Selection',
-            'categories' => $categories
+            'categories' => $categories,
+            'hideEmpty' => $hideEmptyFlag
         ]);
     }
 
