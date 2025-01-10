@@ -5,6 +5,9 @@
 {% block body %}
 {# Sub-Title is Table's Category #}
 <section id="category-name">
+  <div> 
+    <a href="{{path('app_rankings_table_selection')}}"> &larr; </a> 
+  </div>
   <h2 class="text-xl"> 
     <span class="font-bold underline">Category :</span> 
     <a class="hover:text-[#6A994E] hover:text-bold" href="{{ path('app_rankings_category', {id: category.id}) }}"> {{ category.name }} </a>
