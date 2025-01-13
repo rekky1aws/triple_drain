@@ -4,4 +4,22 @@
 
 {% block body %}
 {# List all tables with links to table rankings #}
+<ul class="flex flex-col gap-5">
+  {% for category in categories %}
+    <li>
+      <span class="underline font-bold"> {{category.name}} </span>
+      <ul class="m-1"> 
+        {% for table in category.pinballs %}
+          {% if hideEmpty %}
+            {% if table.scores|length > 0 %}
+              <li class="my-1 mx-5"><a href="{{ path('app_rankings_table', {id: table.id}) }}">{{ table.name }}</a></li>
+            {% endif %}
+          {% else %}
+            <li class="my-1 mx-5"><a href="{{ path('app_rankings_table', {id: table.id}) }}">{{ table.name }}</a></li>
+          {% endif %}
+        {% endfor %}
+      </ul>
+    </li>
+  {% endfor %}
+</ul>
 {% endblock %}

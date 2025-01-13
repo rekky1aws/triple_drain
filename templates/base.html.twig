@@ -15,7 +15,9 @@
     </head>
     <body>
         {% include 'header.html.twig' %}
-        {% block body %}{% endblock %}
+        <main class="m-5 min-h-screen">
+            {% block body %}{% endblock %}
+        </main>
         {% include 'footer.html.twig' %}
     </body>
 </html>

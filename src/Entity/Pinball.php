@@ -21,17 +21,18 @@ class Pinball
     #[ORM\ManyToOne(inversedBy: 'pinballs')]
     #[ORM\JoinColumn(nullable: false)]
     private ?Category $category = null;
-
+    
     /**
      * @var Collection<int, Score>
      */
     #[ORM\OneToMany(targetEntity: Score::class, mappedBy: 'pinball')]
-    private Collection $yes;
+    #[ORM\OrderBy(['value' => 'DESC'])]
+    private Collection $scores;
 
     public function __construct()
     {
         $this->player_id = new ArrayCollection();
-        $this->yes = new ArrayCollection();
+        $this->scores = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -75,7 +76,7 @@ class Pinball
     {
         if (!$this->scores->contains($score)) {
             $this->scores->add($score);
-            $ye->setPinball($this);
+            $scores->setPinball($this);
         }
 
         return $this;

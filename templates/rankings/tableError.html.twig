@@ -1,0 +1,8 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} {{controller_name}} {% endblock %}
+
+{% block body %}
+    <h2>This table does not exist </h2>
+    <p> There is no table with the id :{{table_id}}. Please go back to <a href="{{ path('app_rankings_table_selection') }}">table selection</a> to choose an existing table.</p>
+{% endblock %}

@@ -4,6 +4,39 @@
 
 {% block body %}
 {# Sub-Title is Table's Category #}
+<section id="category-name">
+  <div> 
+    <a href="{{path('app_rankings_table_selection')}}"> &larr; </a> 
+  </div>
+  <h2 class="text-xl"> 
+    <span class="font-bold underline">Category :</span> 
+    <a class="hover:text-[#6A994E] hover:text-bold" href="{{ path('app_rankings_category', {id: category.id}) }}"> {{ category.name }} </a>
+  </h2>
+</section>
+
 {# List all player in decroissant points order for the table (1st player with most points and last player with less points) #}
+<section id="scores" class="flex justify-center text-lg">
+  <table>
+    <thead>
+      <tr>
+        <th class="border-solid border-2" scope="col">Position</th>
+        <th class="border-solid border-2" scope="col">Player</th>
+        <th class="border-solid border-2" scope="col">Score</th>
+      </tr>
+    </thead>
+    <tbody>
+    {% for score in scores %}
+      <tr>
+        <td class="text-center w-20 p-2 border-solid border-2">{{score.position}}</td>
+        <td class="text-left w-32 p-2 border-solid border-2">{{score.player.pseudo}}</td>
+        <td class="text-right p-2 border-solid border-2">{{ score.value|number_format(0, '.', ' ') }}</td>
+      </tr>
+    {% endfor %}
+  </table>
+</section>
+
 {# List all tables from the category with links to those table rankings  #}
+<section class="">
+
+</section>
 {% endblock %}

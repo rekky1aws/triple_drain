@@ -14,7 +14,7 @@ class Score
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\ManyToOne(inversedBy: 'yes')]
+    #[ORM\ManyToOne(inversedBy: 'scores')]
     #[ORM\JoinColumn(nullable: false)]
     private ?Pinball $pinball = null;
 
