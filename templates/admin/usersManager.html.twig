@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Triple Drain - Admin - Users Manager{% endblock %}
+
+{% block body %}
+<table>
+  <thead>
+    <th> Username </th>
+    <th> Roles </th>
+  </thead>
+  <tbody>
+    {% for user in users %}
+    <tr>
+      <td>
+        <a href="{{ path('app_admin_edit_user', {id: user.id}) }}"> {{user.username}} </a>
+      </td>
+      <td>
+        {% for role in user.roles %}
+          <span> {{role}} </span>
+        {% endfor %}
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

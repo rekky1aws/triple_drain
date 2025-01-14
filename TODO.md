@@ -37,5 +37,13 @@
       + Calculate TOP 50 points
       + Calculate TOP 100 points
 
+ + Admin
+   + User Manger
+      + View
+         + Style
+   + User Editor
+      + Controller
+      + View
+
  + Security
    + Lock admin page for non admins and not connected users
