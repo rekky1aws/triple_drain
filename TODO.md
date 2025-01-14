@@ -22,6 +22,8 @@
       + Category
          + Controller
          + View
+   + Register
+      + Style
 
  + Subdomain
    + Admin
@@ -33,3 +35,6 @@
       + Insert table scores via CSV
       + Calculate TOP 50 points
       + Calculate TOP 100 points
+
+ + Security
+   + Lock admin page for non admins and not connected users
