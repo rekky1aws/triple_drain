@@ -31,6 +31,7 @@
       + Page to insert table scores via CSV
 
  + Database
+   + Securise Entity with Roles
    + Functions
       + Insert table scores via CSV
       + Calculate TOP 50 points
