@@ -33,9 +33,11 @@
  + Database
    + Securise Entity with Roles
    + Functions
-      + Insert table scores via CSV
       + Calculate TOP 50 points
       + Calculate TOP 100 points
+
+ + Edit
+    + Insert table scores via CSV
 
  + Admin
    + User Manger

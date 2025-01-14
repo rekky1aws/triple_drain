@@ -8,6 +8,7 @@ use Symfony\Component\Routing\Attribute\Route;
 
 class EditController extends AbstractController
 {
+    #[IsGranted('ROLE_EDITOR', message: 'You are not an editor.')]
     #[Route('/edit', name: 'app_edit')]
     public function index(): Response
     {
@@ -16,6 +17,7 @@ class EditController extends AbstractController
         ]);
     }
 
+    #[IsGranted('ROLE_EDITOR', message: 'You are not an editor.')]
     #[Route('/edit/insert_csv', name: 'app_edit_insertcsv')]
     public function insertCSV (): Response
     {
