@@ -1,5 +1,9 @@
 # TODO
 
+## Pending
+ + Get CSV Insertion to work
+   + Fix Turno not liking forms submitting to the same route
+
 ## Main templates
  + Main elements
    + Footer
