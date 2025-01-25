@@ -15,6 +15,15 @@
       + Better style
       + Images
       + Animations
+   + Teams
+      + Team Selection
+         + Add search bar
+      + Team
+         + Name
+         + Total score in ranking modes
+         + Player list
+            + Names
+            + Scores
    + Rankings
       + Global
          + Controller
