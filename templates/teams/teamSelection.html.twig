@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	{{controller_name}}
+{% endblock %}
+
+{% block body %}
+	{# List all teams with links #}
+    <ul class="m-1">
+      {% for team in teams %}
+        <li class="my-1 mx-5 list-disc">
+          <a href="{{ path('app_team', {id: team.id}) }}">{{ team.name }}</a>
+        </li>
+      {% endfor %}
+    </ul>
+{% endblock %}
+
