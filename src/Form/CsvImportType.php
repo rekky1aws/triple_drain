@@ -32,7 +32,7 @@ class CsvImportType extends AbstractType
                 'class' => User::class,
                 'choice_label' => 'username',
             ])
-            ->add('send', SubmitType::class)
+            // ->add('send', SubmitType::class)
         ;
     }
 
