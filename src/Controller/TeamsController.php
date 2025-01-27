@@ -22,10 +22,20 @@ class TeamsController extends AbstractController
     }
 
     #[Route('/team/{id}', name: 'app_team')]
-    public function index(): Response
+    public function index(EntityManagerInterface $entityManager, int $id): Response
     {
+        $team = $entityManager->getRepository(Team::class)->find($id);
+
+        if (is_null($team)) { // If team doesn't exist display error.
+            return $this->render('teams/teamError.html.twig', [
+                'controller_name' => 'Team does not exist',
+                'team_id' => $id
+            ]);
+        }
+
         return $this->render('teams/team.html.twig', [
             'controller_name' => 'Team',
+            'team' => $team
         ]);
     }
 }
