@@ -24,6 +24,8 @@
          + Player list
             + Names
             + Scores
+      + TeamError
+         + Style
    + Rankings
       + Global
          + Controller
@@ -31,6 +33,9 @@
       + Category
          + Controller
          + View
+      + Table
+         + TableError
+            + Style
 
  + Subdomain
    + Admin
