@@ -7,28 +7,33 @@
 {% endblock %}
 
 {% block body %}
-	{# List all player in decroissant points order for the table (1st player with most points and last player with less points) #}
-	<section id="scores" class="flex justify-center text-lg">
-		<table>
-			<thead>
-				<tr>
-					<th class="border-solid border-2" scope="col">Position</th>
-					<th class="border-solid border-2" scope="col">Player</th>
-					<th class="border-solid border-2" scope="col">Points</th>
-				</tr>
-			</thead>
-			<tbody>
-				{% for player in team.players %}
-					<tr>
-						<td class="text-center w-20 p-2 border-solid border-2"></td>
-						<td class="text-left w-32 p-2 border-solid border-2">{{player.pseudo}}</td>
-						<td class="text-right p-2 border-solid border-2"></td>
-					</tr>
-				{% endfor %}
-			</tbody>
-		</table>
-	</section>
+{# Team Name #}
+<section id="infos" class="flex justify-center">
+    <h2 class="text-2xl font-bold m-4"> {{team.name}} </h2>
+</section>
 
-	{# List all tables from the category with links to those table rankings  #}
-	<section class=""></section>
+{# List all player in decroissant points order for the table (1st player with most points and last player with less points) #}
+<section id="players" class="flex justify-center text-lg">
+    <table>
+        <thead>
+            <tr>
+                <th class="border-solid border-2" scope="col">Position</th>
+                <th class="border-solid border-2" scope="col">Player</th>
+                <th class="border-solid border-2" scope="col">Points</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for player in team.players %}
+                <tr>
+                    <td class="text-center w-20 p-2 border-solid border-2"></td>
+                    <td class="text-left w-32 p-2 border-solid border-2">{{player.pseudo}}</td>
+                    <td class="text-right p-2 border-solid border-2"></td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</section>
+
+{# List all tables from the category with links to those table rankings  #}
+<section class=""></section>
 {% endblock %}
