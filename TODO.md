@@ -19,11 +19,14 @@
       + Team Selection
          + Add search bar
       + Team
+         + Team Rank (sum all players points)
          + Name
+         + Points mode selector
+            + Reads GET parameter too
          + Total score in ranking modes
-         + Player list
-            + Names
-            + Scores
+         + Player list 
+            + Rank in team
+            + Points
       + TeamError
          + Style
    + Rankings
