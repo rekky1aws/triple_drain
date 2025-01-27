@@ -25,6 +25,7 @@ class TeamsController extends AbstractController
     public function index(EntityManagerInterface $entityManager, int $id): Response
     {
         $team = $entityManager->getRepository(Team::class)->find($id);
+        $teamName = $team->getName();
 
         if (is_null($team)) { // If team doesn't exist display error.
             return $this->render('teams/teamError.html.twig', [
@@ -34,7 +35,7 @@ class TeamsController extends AbstractController
         }
 
         return $this->render('teams/team.html.twig', [
-            'controller_name' => 'Team',
+            'controller_name' => "Team : {$teamName}",
             'team' => $team
         ]);
     }
