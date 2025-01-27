@@ -25,9 +25,9 @@
         <tbody>
             {% for player in team.players %}
                 <tr>
-                    <td class="text-center w-20 p-2 border-solid border-2"></td>
+                    <td class="text-center w-20 p-2 border-solid border-2"> {# Player ranking inside of team #} </td>
                     <td class="text-left w-32 p-2 border-solid border-2">{{player.pseudo}}</td>
-                    <td class="text-right p-2 border-solid border-2"></td>
+                    <td class="text-right p-2 border-solid border-2"> {# Player points #} </td>
                 </tr>
             {% endfor %}
         </tbody>
