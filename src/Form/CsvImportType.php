@@ -9,10 +9,10 @@ use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-// use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Validator\Constraints\File;
 
 class CsvImportType extends AbstractType
 {
@@ -25,9 +25,14 @@ class CsvImportType extends AbstractType
             ])
             ->add('file', FileType::class, [
                 'mapped' => false,
-                // 'constraints' => [
-                //     new File("")
-                // ]
+                 'constraints' => [
+                     new File([
+                        'mimeTypes' => [
+                            'text/csv'
+                        ],
+                        'mimeTypesMessage' => 'Please upload a valid CSV file.'
+                     ])
+                ]
             ])
             ->add('filename', TextType::class , [
                 'data' => date("Y-m-d")."_".date("H-m-s").".csv",
