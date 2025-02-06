@@ -29,21 +29,18 @@
    + Register
       + Style
 
- + Subdomain
-   + Admin
-      + Login 
-      + Page to insert table scores via CSV
-
  + Database
    + Securise Entity with Roles
    + Functions
       + Calculate TOP 50 points
       + Calculate TOP 100 points
-
- + Edit
-    + Insert table scores via CSV
+      + CSV
+         + Read CSV to update scores
+            + Add the possibility to read a choosen CSV to revert changes if there is an error
+         + Soft delete in Entity and data base ('usable' field, default to true but can be falsed by admins)
 
  + Admin
+   + CSV soft deleting
    + User Manger
       + View
          + Style
@@ -51,5 +48,9 @@
       + Controller
       + View
 
- + Security
-   + Lock admin page for non admins and not connected users
+ + Edit
+   + CSV Insertion
+      + Hide imported_by user and choose automatically the current user
+      + Make filename automatic and not editable by user (but still show it).
+   + CSV List
+   + CSV View
