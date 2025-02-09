@@ -43,7 +43,8 @@ class RankingsController extends AbstractController
     #[Route('/rankings/catgeory/{id}', name: 'app_rankings_category')]
     public function category(EntityManagerInterface $entityManager, int $id): Response
     {
-        $categories = $entityManager->getRepository(Category::class)->find($id);
+        // TODO : Dispaly rankings by category
+        $category = $entityManager->getRepository(Category::class)->find($id);
         
         return $this->render('rankings/category.html.twig', [
             'controller_name' => 'Category',
