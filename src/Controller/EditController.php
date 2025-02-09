@@ -32,24 +32,26 @@ class EditController extends AbstractController
     }
 
     #[IsGranted('ROLE_EDITOR', message: 'You are not an editor.')]
-    #[Route('/edit/view_csv/', name: 'app_edit_listcsv')]
-    public function listCSV () : Response
+    #[Route('/edit/list_csv/', name: 'app_edit_listcsv')]
+    public function listCSV (EntityManagerInterface $entityManager) : Response
     {
         // List all CSV files.
+        $csvFiles = $entityManager->getRepository(CsvImport::class)->findAll();
 
         return $this->render('edit/list_csv.html.twig', [
             'controller_name' => 'List CSV',
+            'csv_files' => $csvFiles,
         ]);
     }
 
     #[IsGranted('ROLE_EDITOR', message: 'You are not an editor.')]
     #[Route('/edit/view_csv/{slug}', name: 'app_edit_viewcsv')]
-    public function checkCSV () : Response
+    public function viewCSV () : Response
     {
         // View all lines of a CSV File.
 
         return $this->render('edit/view_csv.html.twig', [
-            'controller_name' => 'View CSV',
+            'controller_name' => "View CSV",
         ]);
     }
 

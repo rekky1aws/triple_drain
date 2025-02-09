@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	{{controller_name}}
+{% endblock %}
+
+{% block body %}
+<ul>
+{% for csv_file in csv_files %}
+  <li> <a href="{{ path('app_edit_viewcsv', { slug: csv_file.filename | trim('.csv', 'right') }) }}">{{ csv_file.filename}}</a> </li>
+{% endfor %}
+</ul>
+{% endblock %}
+
