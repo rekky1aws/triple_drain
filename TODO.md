@@ -2,9 +2,6 @@
 
 ## Pending (Next Steps)
  + Get CSV Insertion to work
-   + View a CSV file via /edit/view_csv/{slug}
-      +  Get correct line in db
-      + Display data
    + Inserting data when Importing CSV
    + Ability to apply the scores of a previous CSV file
 
