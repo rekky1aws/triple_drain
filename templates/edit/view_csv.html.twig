@@ -5,6 +5,26 @@
 {% endblock %}
 
 {% block body %}
-
+<div>
+	<h2>File : {{ infos.filename }} </h2>
+	<div>Date : {{ infos.importedAt | date('d/m/Y') }} </div>
+	<div>Imported by : {{ infos.importedBy.username }} </div>
+</div>
+<table>
+	<tr>
+		<th>Table</th>
+		<th>Position</th>
+		<th>Player</th>
+		<th>Score</th>
+	</tr>
+{% for line in data %}
+	<tr>
+		<td> {{line[0]}} </td>
+		<td> {{line[1]}} </td>
+		<td> {{line[2]}} </td>
+		<td> {{line[3]}} </td>
+	</tr>
+{% endfor %}
+</table>
 {% endblock %}
 
