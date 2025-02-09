@@ -1,10 +1,16 @@
 # TODO
 
-## Pending
+## Pending (Next Steps)
  + Get CSV Insertion to work
-   + Fix Turno not liking forms submitting to the same route
+   + View a CSV file via /edit/view_csv/{slug}
+      +  Get correct line in db
+      + Display data
+   + Inserting data when Importing CSV
+   + Ability to apply the scores of a previous CSV file
 
-## Main templates
+## Global
+
+### Main templates
  + Main elements
    + Footer
       + Useful Links
@@ -14,20 +20,19 @@
       + Logo
       + Language Switcher
 
+### Other
  + Pages
-   + Main 
+   + Main
       + Better style
       + Images
       + Animations
    + Rankings
       + Global
-         + Controller
-         + View
+         + _Controller
+         + _View
       + Category
-         + Controller
-         + View
-   + Register
-      + Style
+         + _Controller
+         + _View
 
  + Database
    + Securise Entity with Roles
@@ -42,15 +47,24 @@
  + Admin
    + CSV soft deleting
    + User Manger
-      + View
+      + _View
          + Style
    + User Editor
-      + Controller
-      + View
+      + _Controller
+      + _View
 
  + Edit
+   + _View
+      + Style
    + CSV Insertion
       + Hide imported_by user and choose automatically the current user
       + Make filename automatic and not editable by user (but still show it).
    + CSV List
+      + Enhancing : better presentation and more informations
    + CSV View
+      + Retrieve the correct CSV file from slug
+      + Read CSV data
+      + Display data in a `<table>`
+      + Display if CSV file is `usable` or `unusable` (soft delete)
+      + Buttons
+         + Apply CSV data (if `usable`)
