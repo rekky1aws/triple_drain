@@ -10,5 +10,10 @@
   <li> <a href="{{ path('app_edit_viewcsv', { slug: csv_file.filename | trim('.csv', 'right') }) }}">{{ csv_file.filename}}</a> </li>
 {% endfor %}
 </ul>
+<div class="my-4 mx-2">
+<a class="bg-green-500 font-bold rounded-xl inline-block text-white shadow-lg py-2 px-4 active:scale-95 hover:scale-105" href="{{path('app_edit_insertcsv')}}">
+  New
+</a>
+</div>
 {% endblock %}
 
