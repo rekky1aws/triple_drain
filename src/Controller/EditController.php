@@ -109,6 +109,10 @@ class EditController extends AbstractController
 
                 $entityManager->persist($insertion);
                 $entityManager->flush();
+
+                $slug = basename($safeFilename, '.csv');
+
+                return $this->redirectToRoute('app_edit_viewcsv', ['slug' => $slug]);
             }
         }
 
