@@ -6,6 +6,9 @@
 
 {% block body %}
 <div>
+	<a href="{{path('app_edit_listcsv')}}">Back</a>
+</div>
+<div>
 	<h2>File : {{ infos.filename }} </h2>
 	<div>Date : {{ infos.importedAt | date('d/m/Y') }} </div>
 	<div>Imported by : {{ infos.importedBy.username }} </div>
