@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\CsvImport;
 use App\Form\CsvImportType;
+use App\Service\ScoreManager;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bridge\Doctrine\Attribute\MapEntity;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -51,33 +52,23 @@ class EditController extends AbstractController
     {
         // View all lines of a CSV File.
         $filename = "{$slug}.csv";
-        $csv_infos = $entityManager->getRepository(CsvImport::class)->findOneBy([
+        $csvInfos = $entityManager->getRepository(CsvImport::class)->findOneBy([
             'filename' => $filename
         ]);
 
-        if (is_null($csv_infos)) // CSV not found
+        if (is_null($csvInfos)) // CSV not found
         {
             // Go back to csv selection with error message :
             // "This CSV file doesn't exist"
         }
 
-        $csv_data = [];
-
-        if (($fp = fopen("{$csvDirectory}/{$filename}", "r")) !== FALSE) {
-            $line = fgets($fp);
-            while(($line = fgets($fp)) !== FALSE) {
-                array_push($csv_data, str_getcsv($line));
-            }
-
-            fclose($fp);
-
-            // dd($csv_data); // DEBUG
-        }
+        $scoreManager = new ScoreManager();
+        $csvData = $scoreManager->getDataFromCsv($csvInfos->getFilename(), $csvDirectory) ;
 
         return $this->render('edit/view_csv.html.twig', [
             'controller_name' => "View CSV : {$filename}",
-            'infos' => $csv_infos,
-            'data' => $csv_data,
+            'infos' => $csvInfos,
+            'data' => $csvData,
         ]);
     }
 
