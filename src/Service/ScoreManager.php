@@ -3,15 +3,17 @@
 namespace App\Service;
 
 use Exception;
-use Symfony\Component\DependencyInjection\Attribute\Autowire;
+use Doctrine\ORM\EntityManagerInterface;
 
 class ScoreManager
 {
   private $csvDirectory;
+  private $entityManager;
 
-  public function __construct(string $csvDirectory)
+  public function __construct(string $csvDirectory, EntityManagerInterface $entityManager)
   {
     $this->csvDirectory = $csvDirectory;
+    $this->entityManager = $entityManager;
   }
 
   public function getDataFromCsv (string $csvFilename): ?array
@@ -34,5 +36,13 @@ class ScoreManager
     fclose($fp);
 
     return $csvData;
+  }
+
+  public function importScoresFromCsv (string $csvFilename) :static
+  {
+    $csvData = $this->getDataFromCsv($csvFilename);
+
+
+    return $this;
   }
 }
