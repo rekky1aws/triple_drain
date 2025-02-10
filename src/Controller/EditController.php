@@ -72,6 +72,13 @@ class EditController extends AbstractController
     }
 
     #[IsGranted('ROLE_EDITOR', message: 'You are not an editor.')]
+    #[Route('/edit/view_csv', name: 'app_edit_nocsv')]
+    public function redirectNoCSV()
+    {
+        return $this->redirectToRoute('app_edit_listcsv');
+    }
+
+    #[IsGranted('ROLE_EDITOR', message: 'You are not an editor.')]
     #[Route('/edit/insert_csv', name: 'app_edit_insertcsv', methods: ["GET", "POST"])]
     public function insertCSV (Request $request, EntityManagerInterface $entityManager, Security $security, #[Autowire('%kernel.project_dir%/public/uploads/csvImports')] string $csvDirectory): Response
     {   
