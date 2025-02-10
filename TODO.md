@@ -3,6 +3,7 @@
 ## Pending (Next Steps)
  + Get CSV Insertion to work
    + Inserting data when Importing CSV
+      + Use ScoreManager
    + Ability to apply the scores of a previous CSV file
 
 ## Global
