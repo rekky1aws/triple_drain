@@ -7,19 +7,17 @@ use Symfony\Component\DependencyInjection\Attribute\Autowire;
 
 class ScoreManager
 {
-  private $projectDir;
+  private $csvDirectory;
 
-  public function __construct(string $projectDir)
+  public function __construct(string $csvDirectory)
   {
-    $this->projectDir = $projectDir;
+    $this->csvDirectory = $csvDirectory;
   }
 
   public function getDataFromCsv (string $csvFilename): ?array
   {
-    $csvDirectory = $this->projectDir."/public/uploads/csvImports";
-
     // Open file, if not found throw an error.
-    if (($fp = fopen("{$csvDirectory}/{$csvFilename}", "r")) == FALSE) {
+    if (($fp = fopen("{$this->csvDirectory}/{$csvFilename}", "r")) == FALSE) {
       throw new Exception("The requested file was not found, please make sure you request an existing file.", 1);
     }
 

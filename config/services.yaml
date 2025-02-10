@@ -25,5 +25,5 @@ services:
     # please note that last definitions always *replace* previous ones
     App\Service\ScoreManager:
         arguments: 
-            $projectDir: "%kernel.project_dir%"
+            $csvDirectory: "%kernel.project_dir%/public/uploads/csvImports"
   
