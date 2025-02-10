@@ -48,7 +48,7 @@ class EditController extends AbstractController
 
     #[IsGranted('ROLE_EDITOR', message: 'You are not an editor.')]
     #[Route('/edit/view_csv/{slug}', name: 'app_edit_viewcsv')]
-    public function viewCSV (EntityManagerInterface $entityManager, string $slug, #[Autowire('%kernel.project_dir%/public/uploads/csvImports')] string $csvDirectory) : Response
+    public function viewCSV (EntityManagerInterface $entityManager, string $slug, ScoreManager $scoreManager) : Response
     {
         // View all lines of a CSV File.
         $filename = "{$slug}.csv";
@@ -62,8 +62,7 @@ class EditController extends AbstractController
             // "This CSV file doesn't exist"
         }
 
-        $scoreManager = new ScoreManager();
-        $csvData = $scoreManager->getDataFromCsv($csvInfos->getFilename(), $csvDirectory) ;
+        $csvData = $scoreManager->getDataFromCsv($csvInfos->getFilename()) ;
 
         return $this->render('edit/view_csv.html.twig', [
             'controller_name' => "View CSV : {$filename}",
