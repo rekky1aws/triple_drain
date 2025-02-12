@@ -59,7 +59,7 @@ class EditController extends AbstractController
         if (is_null($csvInfos)) // CSV not found
         {
             // Error flash message
-            $this->addFlash('error', 'CSV File not found, please make sure you are trying to access an existiing file.');
+            $this->addFlash('error', "CSV File '{$filename}' not found, please make sure you are trying to access an existing file.");
             return $this->redirectToRoute('app_edit_listcsv');
         }
 
