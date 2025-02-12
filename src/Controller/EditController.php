@@ -103,7 +103,7 @@ class EditController extends AbstractController
 
                 $slug = basename($safeFilename, '.csv');
 
-                $this->addFlash('notice', "CSV File ({$filename}) has been imported.");
+                $this->addFlash('success', "CSV File ({$safeFilename}) has been imported.");
 
                 return $this->redirectToRoute('app_edit_viewcsv', ['slug' => $slug]);
             }
