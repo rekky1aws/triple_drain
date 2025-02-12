@@ -73,6 +73,10 @@ let count = 0.1;
 flashMessages.forEach((elt) => {
     elt.style.animationDelay = `${count}s`;
     count += 0.1;
+
+    if (elt.textContent.length >= 15) {
+        elt.style.animationDuration = `${5 + ((elt.textContent.length - 15) * 0.05)}s`;
+    }
 });
 </script>
 
