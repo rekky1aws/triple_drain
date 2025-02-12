@@ -18,6 +18,8 @@
       + Logo
       + Language Switcher
 
+### Flash messages
+
 ### Other
  + Pages
    + Main
@@ -43,8 +45,8 @@
          + Soft delete in Entity and data base ('usable' field, default to true but can be falsed by admins)
 
  + Admin
-   + CSV soft deleting
-   + User Manger
+   + CSV soft deleting (bool $usable)
+   + User Manager
       + _View
          + Style
    + User Editor
@@ -59,10 +61,8 @@
       + Make filename automatic and not editable by user (but still show it).
    + CSV List
       + Enhancing : better presentation and more informations
+      + Display if CSV file is `usable` or not next to it's name.
    + CSV View
-      + Retrieve the correct CSV file from slug
-      + Read CSV data
-      + Display data in a `<table>`
       + Display if CSV file is `usable` or `unusable` (soft delete)
       + Buttons
          + Apply CSV data (if `usable`)
