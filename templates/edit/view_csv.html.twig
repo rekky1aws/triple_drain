@@ -16,6 +16,11 @@
 		<h2>File : {{ infos.filename }} </h2>
 		<div>Date : {{ infos.importedAt | date('d/m/Y') }} </div>
 		<div>Imported by : {{ infos.importedBy.username }} </div>
+		{% if infos.usable %}
+		<div class="text-green-500">Usable</div>
+		{% else %}
+		<div class="text-red-500">Unusable</div>
+		{% endif %}
 	</div>
 </div>
 
