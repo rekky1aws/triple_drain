@@ -23,6 +23,9 @@ class CsvImport
     #[ORM\Column(length: 255)]
     private ?string $filename = null;
 
+    #[ORM\Column]
+    private ?bool $usable = true;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -60,6 +63,18 @@ class CsvImport
     public function setFilename(string $filename): static
     {
         $this->filename = $filename;
+
+        return $this;
+    }
+
+    public function isUsable(): ?bool
+    {
+        return $this->usable;
+    }
+
+    public function setUsable(bool $usable): static
+    {
+        $this->usable = $usable;
 
         return $this;
     }
