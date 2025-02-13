@@ -10,7 +10,7 @@ use Doctrine\Migrations\AbstractMigration;
 /**
  * Auto-generated Migration: Please modify to your needs!
  */
-final class Version20250211023502 extends AbstractMigration
+final class Version20250213164131 extends AbstractMigration
 {
     public function getDescription(): string
     {
@@ -21,7 +21,7 @@ final class Version20250211023502 extends AbstractMigration
     {
         // this up() migration is auto-generated, please modify it to your needs
         $this->addSql('CREATE TABLE category (id INT AUTO_INCREMENT NOT NULL, name VARCHAR(255) NOT NULL, UNIQUE INDEX UNIQ_64C19C15E237E06 (name), PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
-        $this->addSql('CREATE TABLE csv_import (id INT AUTO_INCREMENT NOT NULL, imported_by_id INT NOT NULL, imported_at DATETIME NOT NULL COMMENT \'(DC2Type:datetime_immutable)\', filename VARCHAR(255) NOT NULL, INDEX IDX_835A46E274953CEA (imported_by_id), PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
+        $this->addSql('CREATE TABLE csv_import (id INT AUTO_INCREMENT NOT NULL, imported_by_id INT NOT NULL, imported_at DATETIME NOT NULL COMMENT \'(DC2Type:datetime_immutable)\', filename VARCHAR(255) NOT NULL, usable TINYINT(1) NOT NULL, INDEX IDX_835A46E274953CEA (imported_by_id), PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
         $this->addSql('CREATE TABLE pinball (id INT AUTO_INCREMENT NOT NULL, category_id INT NOT NULL, name VARCHAR(255) NOT NULL, UNIQUE INDEX UNIQ_2D8B0FAC5E237E06 (name), INDEX IDX_2D8B0FAC12469DE2 (category_id), PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
         $this->addSql('CREATE TABLE player (id INT AUTO_INCREMENT NOT NULL, team_id INT DEFAULT NULL, pseudo VARCHAR(255) NOT NULL, has_cheated TINYINT(1) NOT NULL, UNIQUE INDEX UNIQ_98197A6586CC499D (pseudo), INDEX IDX_98197A65296CD8AE (team_id), PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
         $this->addSql('CREATE TABLE score (id INT AUTO_INCREMENT NOT NULL, pinball_id INT NOT NULL, player_id INT NOT NULL, value BIGINT NOT NULL, position INT DEFAULT NULL, top50_points INT DEFAULT NULL, top100_points INT DEFAULT NULL, date DATE NOT NULL, INDEX IDX_329937514BD1277E (pinball_id), INDEX IDX_3299375199E6F5DF (player_id), PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
