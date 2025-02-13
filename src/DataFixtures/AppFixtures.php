@@ -29,13 +29,13 @@ class AppFixtures extends Fixture
                 "Wild West Rampage",
                 "Sorcerer's Lair",
                 "Verne's Mysterious Island",
-                "A Samurai Vengeance",
+                "A Samourai's Vengeance",
                 "Wrath of the Elder Gods",
                 "Grimm Tales",
                 "Curse of the Mummy",
                 "Pinball Noir",
                 "Sky Pirates: Treasures of the Clouds",
-                "Pahsa",
+                "Pasha",
                 "Biolab",
                 "Rome",
                 "Secrets of the Deep",
@@ -47,7 +47,7 @@ class AppFixtures extends Fixture
                 "Crypt of the NecroDancer Pinball"
             ],
             "Dreamworks Pinball" => [
-                "'DreamWorks Kung Fu Panda Pinball",
+                "DreamWorks Kung Fu Panda Pinball",
                 "DreamWorks How to Train Your Dragon Pinball",
                 "DreamWorks Trolls Pinball"
             ],
