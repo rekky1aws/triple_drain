@@ -5,11 +5,12 @@
 {% endblock %}
 
 {% block body %}
-<div class="flex gap-4">
-	<div>
-		<a href="{{path('app_edit_listcsv')}}" class="flex justify-center items-center"> 
-		<span class="bg-gray-300 px-4 py-2 rounded-full shadow-lg active:scale-95 hover:scale-105">&mapstoleft; Back</span>
-		</a>
+<div class="flex items-center gap-4">
+	<div class="flex flex-col gap-2">
+		<a href="{{path('app_edit_listcsv')}}" class="bg-gray-300 px-4 py-2 rounded-full shadow-lg active:scale-95 hover:scale-105 text-center">&mapstoleft; Back </a>
+		{% if infos.usable %}
+		<a id="apply-button" href="{{path('app_edit_applycsv', { slug: infos.filename | trim('.csv',side: 'right') } ) }}" class="bg-green-500 font-bold rounded-full inline-block text-white shadow-lg py-2 px-4 active:scale-95 hover:scale-105 text-center">Apply</a>
+		{% endif %}
 	</div>
 	<div>
 		<h2>File : {{ infos.filename }} </h2>
@@ -43,5 +44,18 @@
 {% endif %}
 {% endfor %}
 </table>
+
+{% if infos.usable %}
+<script>
+const applyButton  = document.querySelector('#apply-button');
+function confirmIt (evt) {
+	if (!confirm('Are you sure you want to apply this CSV file to the database ?')) {
+		evt.preventDefault();
+	}
+}
+applyButton.addEventListener("click", confirmIt);
+</script>
+{% endif %}
+
 {% endblock %}
 
