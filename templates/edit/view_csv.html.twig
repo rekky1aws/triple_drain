@@ -13,20 +13,29 @@
 	<div>Date : {{ infos.importedAt | date('d/m/Y') }} </div>
 	<div>Imported by : {{ infos.importedBy.username }} </div>
 </div>
-<table>
+<table class="m-4">
 	<tr>
-		<th>Table</th>
-		<th>Position</th>
-		<th>Player</th>
-		<th>Score</th>
+		<th class="border-2 border-gray-300 p-2">Table</th>
+		<th class="border-2 border-gray-300 p-2">Position</th>
+		<th class="border-2 border-gray-300 p-2">Player</th>
+		<th class="border-2 border-gray-300 p-2">Score</th>
 	</tr>
 {% for line in data %}
+{% if line[0] is empty  %}
 	<tr>
-		<td> {{line[0]}} </td>
-		<td> {{line[1]}} </td>
-		<td> {{line[2]}} </td>
-		<td> {{line[3]}} </td>
+		<td class="h-2 bg-gray-200 border-2 border-gray-300"></td>
+		<td class="h-2 bg-gray-200 border-2 border-gray-300"></td>
+		<td class="h-2 bg-gray-200 border-2 border-gray-300"></td>
+		<td class="h-2 bg-gray-200 border-2 border-gray-300"></td>
 	</tr>
+{% else %}
+	<tr>
+		<td class="border-2 border-gray-300 p-2"> {{line[0]}} </td>
+		<td class="border-2 border-gray-300 p-2"> {{line[1]}} </td>
+		<td class="border-2 border-gray-300 p-2"> {{line[2]}} </td>
+		<td class="border-2 border-gray-300 p-2"> {{line[3]}} </td>
+	</tr>
+{% endif %}
 {% endfor %}
 </table>
 {% endblock %}
