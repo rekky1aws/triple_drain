@@ -29,5 +29,5 @@ _resources
 ###< resources used by devs
 
 ###> csv imports ###
-public/uploads/csvImports
+/public/uploads/csvImports
 ###< csv imports ###
