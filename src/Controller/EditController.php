@@ -58,8 +58,9 @@ class EditController extends AbstractController
 
         if (is_null($csvInfos)) // CSV not found
         {
-            // Go back to csv selection with error message :
-            // "This CSV file doesn't exist"
+            // Error flash message
+            $this->addFlash('error', "CSV File '{$filename}' not found, please make sure you are trying to access an existing file.");
+            return $this->redirectToRoute('app_edit_listcsv');
         }
 
         $csvData = $scoreManager->getDataFromCsv($csvInfos->getFilename()) ;
@@ -108,6 +109,8 @@ class EditController extends AbstractController
                 $entityManager->flush();
 
                 $slug = basename($safeFilename, '.csv');
+
+                $this->addFlash('success', "CSV File ({$safeFilename}) has been imported.");
 
                 return $this->redirectToRoute('app_edit_viewcsv', ['slug' => $slug]);
             }
