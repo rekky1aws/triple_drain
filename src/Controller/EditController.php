@@ -6,6 +6,7 @@ use App\Entity\CsvImport;
 use App\Form\CsvImportType;
 use App\Service\ScoreManager;
 use Doctrine\ORM\EntityManagerInterface;
+use Exception;
 use Symfony\Bridge\Doctrine\Attribute\MapEntity;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Bundle\SecurityBundle\Security;
@@ -121,5 +122,25 @@ class EditController extends AbstractController
             'controller_name' => 'Edition - CSV Insertion',
             'form_data' => $form,
         ]);
+    }
+
+    #[IsGranted('ROLE_EDITOR', message: 'You are not an editor.')]
+    #[Route('/edit/apply_csv/{slug}', name: 'app_edit_applycsv', methods: ["GET", "POST"])]
+    public function applyCSV(EntityManagerInterface $entityManager, string $slug, ScoreManager $scoreManager): Response {
+        // Use scoreManager.php to apply the data of the CSV file to the database
+        try {
+            $scoreManager->importScoresFromCsv("{$slug}.csv");
+        } catch (Exception $e) {
+            $this->addFlash('error', $e->getMessage());
+            return $this->redirectToRoute('app_edit_viewcsv', ['slug' => $slug]);
+        }
+        
+        // Redirect to view CSV with a success message
+        return $this->render(
+            'edit/apply_csv.html.twig',
+            [
+                'controller_name' => 'Edition - Applying CSV Data to Database',
+            ]
+        );
     }
 }

@@ -2,6 +2,9 @@
 
 namespace App\Service;
 
+use App\Entity\Pinball;
+use App\Entity\Player;
+use App\Entity\Score;
 use Exception;
 use Doctrine\ORM\EntityManagerInterface;
 
@@ -41,6 +44,56 @@ class ScoreManager
   public function importScoresFromCsv (string $csvFilename) :static
   {
     $csvData = $this->getDataFromCsv($csvFilename);
+    foreach ($csvData as $index => $line) {
+      // Ignore empty lines
+      if ($line[0] == "") {
+        continue;
+      }
+
+      $score = new Score();
+
+      // PINBALL
+      $pinball = $this->entityManager->getRepository(Pinball::class)->findOneBy([
+        'name' => $line[0]
+      ]);
+      
+      if (is_null($pinball)) {
+        dd($line, $index);
+        throw new Exception("Error on line $index in $csvFilename. This pinball table doesn't exist in database. Please make sure the CSV file only contains existing tables.");
+      }      
+      $score->setPinball($pinball);
+
+      // POSITION
+      $position = intval($line[1]);
+      if ($position < 1 || $position > 100) {
+        dd($line);
+        throw new Exception("Error on line $index in $csvFilename. Position can only be a value between 1 and 100");
+      }
+      $score->setPosition($line[1]);
+
+      // PLAYER
+      $player = $this->entityManager->getRepository(Player::class)->findOneBy([
+          'pseudo' => $line[2]
+        ]);
+
+      if (is_null($player)) {
+        $player = new Player();
+        $player->setPseudo($line[2]);
+        $this->entityManager->persist($player);
+        $this->entityManager->flush();
+      }
+      $score->setPlayer($player);
+      // $score->setPlayer($line[2]);
+      // $score->setValue($line[3]);
+
+
+      // dump($score);
+
+     
+
+    }
+
+    
 
 
     return $this;
