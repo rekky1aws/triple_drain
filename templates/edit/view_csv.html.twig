@@ -5,14 +5,19 @@
 {% endblock %}
 
 {% block body %}
-<div>
-	<a href="{{path('app_edit_listcsv')}}">Back</a>
+<div class="flex gap-4">
+	<div>
+		<a href="{{path('app_edit_listcsv')}}" class="flex justify-center items-center"> 
+		<span class="bg-gray-300 px-4 py-2 rounded-full shadow-lg active:scale-95 hover:scale-105">&mapstoleft; Back</span>
+		</a>
+	</div>
+	<div>
+		<h2>File : {{ infos.filename }} </h2>
+		<div>Date : {{ infos.importedAt | date('d/m/Y') }} </div>
+		<div>Imported by : {{ infos.importedBy.username }} </div>
+	</div>
 </div>
-<div>
-	<h2>File : {{ infos.filename }} </h2>
-	<div>Date : {{ infos.importedAt | date('d/m/Y') }} </div>
-	<div>Imported by : {{ infos.importedBy.username }} </div>
-</div>
+
 <table class="m-4">
 	<tr>
 		<th class="border-2 border-gray-300 p-2">Table</th>
