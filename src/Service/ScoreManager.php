@@ -83,7 +83,8 @@ class ScoreManager
         $this->entityManager->flush();
       }
       $score->setPlayer($player);
-      // $score->setPlayer($line[2]);
+
+      // SCORE
       // $score->setValue($line[3]);
 
 

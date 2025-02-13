@@ -2,9 +2,13 @@
 
 ## Pending (Next Steps)
  + Get CSV Insertion to work
+   + Ability to apply the scores of a previous CSV file
+      + Score value insertion
    + Inserting data when Importing CSV
       + Use ScoreManager
-   + Ability to apply the scores of a previous CSV file
+ + Change fixtures to generate only stable data
+   + Teams
+   + Pinballs/Tables
 
 ## Global
 
