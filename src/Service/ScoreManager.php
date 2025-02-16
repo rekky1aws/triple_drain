@@ -46,7 +46,7 @@ class ScoreManager
     $csvData = $this->getDataFromCsv($csvFilename);
     foreach ($csvData as $index => $line) {
       // Ignore empty lines
-      if ($line[0] == "") {
+      if ($line[0] == "" || $line[1] =="" || $line[2] =="" || $line[3] == "") {
         continue;
       }
 
@@ -84,11 +84,12 @@ class ScoreManager
       }
       $score->setPlayer($player);
 
-      // SCORE
-      // $score->setValue($line[3]);
+      // VALUE
+      $value = intval(str_replace("\u{202F}", "",  $line[3]));
 
+      if ($value <= 0) {
 
-      // dump($score);
+      }
 
      
 
