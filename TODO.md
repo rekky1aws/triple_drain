@@ -2,10 +2,8 @@
 
 ## Pending (Next Steps)
  + Get CSV Insertion to work
-   + Ability to apply the scores of a previous CSV file
-      + Score value insertion
-   + Inserting data when Importing CSV
-      + Use ScoreManager
+   + Fix memory leak
+      + Find what uses so much memory
  + Change fixtures to generate only stable data
    + Teams
    + Pinballs/Tables
