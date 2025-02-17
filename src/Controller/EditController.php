@@ -136,11 +136,11 @@ class EditController extends AbstractController
         }
         
         // Redirect to view CSV with a success message
-        return $this->render(
-            'edit/apply_csv.html.twig',
-            [
-                'controller_name' => 'Edition - Applying CSV Data to Database',
-            ]
-        );
+        // return $this->render(
+        //     'edit/apply_csv.html.twig',
+        //     [
+        //         'controller_name' => 'Edition - Applying CSV Data to Database',
+        //     ]
+        // );
     }
 }

@@ -88,14 +88,24 @@ class ScoreManager
       $value = intval(str_replace("\u{202F}", "",  $line[3]));
 
       if ($value <= 0) {
-
+        throw new Exception("Error on line $index in $csvFilename. Score values should only be positive integers.");
       }
+      
+      $score->setValue($value);
 
-     
+      // DATE
+      $dateText = substr($csvFilename, 0, 10)."_00-00-00";
+      $date = date_create_from_format('Y-m-d_H-m-s', $dateText);
+      $score->setDate($date);
+
+      // PERSIST
+      $this->entityManager->persist($score);
+      $this->entityManager->flush();
+
+      dump(get_defined_vars());
 
     }
 
-    
 
 
     return $this;
