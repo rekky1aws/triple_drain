@@ -135,12 +135,7 @@ class EditController extends AbstractController
             return $this->redirectToRoute('app_edit_viewcsv', ['slug' => $slug]);
         }
         
-        // Redirect to view CSV with a success message
-        // return $this->render(
-        //     'edit/apply_csv.html.twig',
-        //     [
-        //         'controller_name' => 'Edition - Applying CSV Data to Database',
-        //     ]
-        // );
+        $this->addFlash('success', "Data from CSV file ({$slug}.csv) imported successfully.");
+        return $this->redirectToRoute('app_edit_viewcsv', ['slug' => $slug]);
     }
 }
