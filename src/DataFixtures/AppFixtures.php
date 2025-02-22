@@ -185,7 +185,7 @@ class AppFixtures extends Fixture
         ];
         
         // Teams
-        $teams = [];
+        /*$teams = [];
         for ($i = 0; $i < 15; $i++) {
             $teamname = $faker->word();
             
@@ -213,7 +213,7 @@ class AppFixtures extends Fixture
             array_push($players, $player);
 
             $manager->persist($player);
-        }
+        }*/
 
         // Categories
         $categories = [];
@@ -244,7 +244,7 @@ class AppFixtures extends Fixture
         }
 
         // Scores
-        $scores = [];
+        /*$scores = [];
         $scoreTables = [];
 
         for ($i = 0; $i < 5; $i++) { // $i pinball tables
@@ -276,7 +276,7 @@ class AppFixtures extends Fixture
 
                 $manager->persist($score);
             }
-        }
+        }*/
 
         $manager->flush();
     }
