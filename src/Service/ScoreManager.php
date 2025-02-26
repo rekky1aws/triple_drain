@@ -71,6 +71,14 @@ class ScoreManager
       }
       $score->setPosition($line[1]);
 
+      // POINTS
+      if ($position <= 50) {
+        $score->setTop50Points((51 - $position) * 2);
+      } else {
+        $score->setTop50Points(0);
+      }
+      $score->setTop100Points(101 - $position);
+
       // PLAYER
       $player = $this->entityManager->getRepository(Player::class)->findOneBy([
           'pseudo' => $line[2]
@@ -101,6 +109,7 @@ class ScoreManager
       // PERSIST
       $this->entityManager->persist($score);
       $this->entityManager->flush();
+      $this->entityManager->clear();
 
       dump(get_defined_vars());
 
