@@ -54,7 +54,7 @@
 <script>
 const applyButton  = document.querySelector('#apply-button');
 function confirmIt (evt) {
-	if (!confirm('Are you sure you want to apply this CSV file to the database ?')) {
+	if (!confirm('Are you sure you want to apply this CSV file to the database ? This will take some time and block all requests during the process.')) {
 		evt.preventDefault();
 	}
 }
