@@ -3,10 +3,14 @@
 ## Pending (Next Steps)
  + Get CSV Insertion to work
    + Fix memory leak
-      + Find what uses so much memory
- + Change fixtures to generate only stable data
-   + Teams
-   + Pinballs/Tables
+      + Check if clearing entityManager works
+ + ScoreManager 
+   + method to get sum of all points for a player
+      + TOP50
+      + TOP100
+   + method to get all TOP50 scores
+   + method to get all TOP100 scores
+ + Display the summed scores
 
 ## Global
 
