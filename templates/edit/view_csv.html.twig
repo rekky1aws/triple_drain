@@ -1,0 +1,66 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	{{controller_name}}
+{% endblock %}
+
+{% block body %}
+<div class="flex items-center gap-4">
+	<div class="flex flex-col gap-2">
+		<a href="{{path('app_edit_listcsv')}}" class="bg-gray-300 px-4 py-2 rounded-full shadow-lg active:scale-95 hover:scale-105 text-center">&mapstoleft; Back </a>
+		{% if infos.usable %}
+		<a id="apply-button" href="{{path('app_edit_applycsv', { slug: infos.filename | trim('.csv',side: 'right') } ) }}" class="bg-green-500 font-bold rounded-full inline-block text-white shadow-lg py-2 px-4 active:scale-95 hover:scale-105 text-center">Apply</a>
+		{% endif %}
+	</div>
+	<div>
+		<h2>File : {{ infos.filename }} </h2>
+		<div>Date : {{ infos.importedAt | date('d/m/Y') }} </div>
+		<div>Imported by : {{ infos.importedBy.username }} </div>
+		{% if infos.usable %}
+		<div class="text-green-500">Usable</div>
+		{% else %}
+		<div class="text-red-500">Unusable</div>
+		{% endif %}
+	</div>
+</div>
+
+<table class="m-4">
+	<tr>
+		<th class="border-2 border-gray-300 p-2">Table</th>
+		<th class="border-2 border-gray-300 p-2">Position</th>
+		<th class="border-2 border-gray-300 p-2">Player</th>
+		<th class="border-2 border-gray-300 p-2">Score</th>
+	</tr>
+{% for line in data %}
+{% if line[0] is empty  %}
+	<tr>
+		<td class="h-2 bg-gray-200 border-2 border-gray-300"></td>
+		<td class="h-2 bg-gray-200 border-2 border-gray-300"></td>
+		<td class="h-2 bg-gray-200 border-2 border-gray-300"></td>
+		<td class="h-2 bg-gray-200 border-2 border-gray-300"></td>
+	</tr>
+{% else %}
+	<tr>
+		<td class="border-2 border-gray-300 p-2"> {{line[0]}} </td>
+		<td class="border-2 border-gray-300 p-2"> {{line[1]}} </td>
+		<td class="border-2 border-gray-300 p-2"> {{line[2]}} </td>
+		<td class="border-2 border-gray-300 p-2"> {{line[3]}} </td>
+	</tr>
+{% endif %}
+{% endfor %}
+</table>
+
+{% if infos.usable %}
+<script>
+const applyButton  = document.querySelector('#apply-button');
+function confirmIt (evt) {
+	if (!confirm('Are you sure you want to apply this CSV file to the database ? This will take some time and block all requests during the process.')) {
+		evt.preventDefault();
+	}
+}
+applyButton.addEventListener("click", confirmIt);
+</script>
+{% endif %}
+
+{% endblock %}
+

@@ -29,13 +29,13 @@ class AppFixtures extends Fixture
                 "Wild West Rampage",
                 "Sorcerer's Lair",
                 "Verne's Mysterious Island",
-                "A Samurai Vengeance",
+                "A Samourai's Vengeance",
                 "Wrath of the Elder Gods",
                 "Grimm Tales",
                 "Curse of the Mummy",
                 "Pinball Noir",
                 "Sky Pirates: Treasures of the Clouds",
-                "Pahsa",
+                "Pasha",
                 "Biolab",
                 "Rome",
                 "Secrets of the Deep",
@@ -47,7 +47,7 @@ class AppFixtures extends Fixture
                 "Crypt of the NecroDancer Pinball"
             ],
             "Dreamworks Pinball" => [
-                "'DreamWorks Kung Fu Panda Pinball",
+                "DreamWorks Kung Fu Panda Pinball",
                 "DreamWorks How to Train Your Dragon Pinball",
                 "DreamWorks Trolls Pinball"
             ],
@@ -185,7 +185,7 @@ class AppFixtures extends Fixture
         ];
         
         // Teams
-        $teams = [];
+        /*$teams = [];
         for ($i = 0; $i < 15; $i++) {
             $teamname = $faker->word();
             
@@ -213,7 +213,7 @@ class AppFixtures extends Fixture
             array_push($players, $player);
 
             $manager->persist($player);
-        }
+        }*/
 
         // Categories
         $categories = [];
@@ -244,7 +244,7 @@ class AppFixtures extends Fixture
         }
 
         // Scores
-        $scores = [];
+        /*$scores = [];
         $scoreTables = [];
 
         for ($i = 0; $i < 5; $i++) { // $i pinball tables
@@ -276,7 +276,7 @@ class AppFixtures extends Fixture
 
                 $manager->persist($score);
             }
-        }
+        }*/
 
         $manager->flush();
     }

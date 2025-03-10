@@ -1,0 +1,9 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} {{controller_name}} {% endblock %}
+
+{% block body %}
+<ul>
+    <li><a href="{{path('app_edit_listcsv')}}">Manage CSV files.</a></li>
+</ul>
+{% endblock %}
