@@ -5,9 +5,16 @@ TripleDrain is a (work in progress) web app made to gather pinball score data, m
 Required :
  + [php](https://www.php.net/manual/en/install.php)
     + php-xml
+ + 
  + [composer](https://getcomposer.org/download/)
  + [symfony](https://symfony.com/download)
 
+
+## Initialization
+To install all dependencies, run :
+```bash
+composer install
+```
 
 ## Run
 Start the project in local:<br>
