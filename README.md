@@ -18,6 +18,12 @@ To install all composer dependencies, run :
 composer install
 ```
 
+### DB Connexion
+Create a database named `triple_drain` in mysql.
+Create a user named `triple_drain` in mysql.
+Grant privileges on the `triple_drain` db to your `triple_drain` user.
+Change `.env` file according to your configuration.
+
 ## Run
 Start the project in local:<br>
 symfony server:start <br>
