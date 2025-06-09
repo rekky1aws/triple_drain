@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} {{controller_name}} : {# Title is Table Name #} {% endblock %}
+
+{% block body %}
+{# Sub-Title is Table's Category #}
+<section id="category-name">
+  <div> 
+    <a href="{{path('app_rankings_table_selection')}}"> &larr; </a> 
+  </div>
+  <h2 class="text-xl"> 
+    <span class="font-bold underline">Category :</span> 
+    <a class="hover:text-[#6A994E] hover:text-bold" href="{{ path('app_rankings_category', {id: category.id}) }}"> {{ category.name }} </a>
+  </h2>
+</section>
+
+{% include 'rankings/components/rankingTable.html.twig'%}
+
+
+
+{# List all tables from the category with links to those table rankings  #}
+<section class="">
+
+</section>
+{% endblock %}
