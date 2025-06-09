@@ -8,11 +8,13 @@ Required :
     + php-mysql
     + php-mbstring
     + php-intl
- + mariadb
  + mysql
+ + mariadb
  + [composer](https://getcomposer.org/download/)
  + [symfony](https://symfony.com/download)
 
+Recommended :
+ + [phphMyAdmin](https://www.phpmyadmin.net)
 
 ## Initialization
 ### Composer packages
