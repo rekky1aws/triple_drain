@@ -48,3 +48,15 @@ php bin/console do:fil:lo
 Start the project in local:<br>
 symfony server:start <br>
 Go to `http://localhost:8000`
+
+## Use
+### Create an admin account
+Go to `http://localhost:8000/register` and create an user.
+Update your user in your database and change it's role to `["ROLE_EDITOR","ROLE_ADMIN"]`.
+The user is now an admin and an editor (which is required to be an admin).
+
+### Log In
+Go to `http://localhost:8000/login` and log into your account.
+
+### Edition
+Go to `http://localhost:8000/edit` after [logging in](#log-in)
