@@ -1,9 +1,6 @@
 # TODO
 
 ## Pending (Next Steps)
- + Get CSV Insertion to work
-   + Fix memory leak
-      + Check if clearing entityManager works
  + ScoreManager 
    + method to get sum of all points for a player
       + TOP50
@@ -65,6 +62,8 @@
    + CSV Insertion
       + Hide imported_by user and choose automatically the current user
       + Make filename automatic and not editable by user (but still show it).
+      + Fix memory leak
+         + Check if clearing entityManager works
    + CSV List
       + Enhancing : better presentation and more informations
       + Display if CSV file is `usable` or not next to it's name.
