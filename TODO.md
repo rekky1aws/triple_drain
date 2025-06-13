@@ -9,6 +9,8 @@
    + method to get all TOP100 scores
  + Display the summed scores
 
+ + Remove language support to only have english
+
 ## Global
 
 ### Main templates
@@ -20,15 +22,22 @@
       + Nav
       + Logo
       + Language Switcher
+      + LogIn / Register buttons when not connected
+      + User Account Manager button when connected
+      + Show Admin & Editor dashboard depending on the user roles
 
 ### Flash messages
 
 ### Other
+
  + Pages
    + Main
       + Better style
       + Images
       + Animations
+   + User account management
+      + Change Password
+      + Change Mail
    + Rankings
       + Global
          + _Controller
@@ -38,7 +47,9 @@
          + _View
 
  + Database
-   + Securise Entity with Roles
+   + User
+      + 
+   + Securise Entity with Roles 
    + Functions
       + Calculate TOP 50 points
       + Calculate TOP 100 points
@@ -66,8 +77,4 @@
          + Check if clearing entityManager works
    + CSV List
       + Enhancing : better presentation and more informations
-      + Display if CSV file is `usable` or not next to it's name.
-   + CSV View
-      + Display if CSV file is `usable` or `unusable` (soft delete)
-      + Buttons
-         + Apply CSV data (if `usable`)
+      + Display if CSV file is `usable` or not next to 
