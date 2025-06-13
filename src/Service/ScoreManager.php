@@ -43,6 +43,8 @@ class ScoreManager
 
   public function importScoresFromCsv (string $csvFilename) :static
   {
+    set_time_limit(100000);
+
     $csvData = $this->getDataFromCsv($csvFilename);
     foreach ($csvData as $index => $line) {
       // Ignore empty lines
