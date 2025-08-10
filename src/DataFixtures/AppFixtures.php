@@ -162,7 +162,7 @@ class AppFixtures extends Fixture
                 "Swords of Fury",
                 "Indiana Jones: The Pinball Adventure",
                 "Dr.Dude and his Exellent Ray",
-                "Space Staiton",
+                "Space Station",
                 "Funhouse",
                 "No Good Gofers®",
                 "Tales of the Arabian Nights",
