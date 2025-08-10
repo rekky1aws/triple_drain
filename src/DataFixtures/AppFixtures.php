@@ -20,7 +20,9 @@ class AppFixtures extends Fixture
         $tableData = [
             "Pinball Wild Card" => [
                 "The Princess Bride Pinball",
-                "Goat Simulator Pinball"
+                "Goat Simulator Pinball",
+                "Tomb Raider Pinball: Secrets of Croft Manor",
+                "Tomb Raider Pinball: Adventures of Lara Croft"
             ],
             "Création Zen" => [
                 "Super League Football",
@@ -181,7 +183,7 @@ class AppFixtures extends Fixture
                 "Medieval Madness",
                 "The Creature From The Black Lagoon",
                 "Monster Bash",
-            ]
+            ],
         ];
         
         // Teams
