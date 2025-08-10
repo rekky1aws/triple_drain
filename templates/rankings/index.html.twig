@@ -3,13 +3,9 @@
 {% block title %} {{controller_name}} {% endblock %}
 
 {% block body %}
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
-
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code>/home/rekkylaws/projects/code/web/backend/_symfony/pintrack/src/Controller/RankingsController.php</code></li>
-        <li>Your template at <code>/home/rekkylaws/projects/code/web/backend/_symfony/pintrack/templates/rankings/index.html.twig</code></li>
-    </ul>
-</div>
+    <section id="rankings" class="w-full p-10 flex flex-wrap justify-evenly text-4xl uppercase">
+        <a href="{{ path('app_rankings_global')}}" class="link-container bg-[#6A994E] m-5 p-20 rounded-3xl ease-in-out duration-200 hover:scale-105 hover:shadow-xl active:scale-95">Global Rankings</a>
+        <a href="{{ path('app_rankings_table_selection')}}" class="link-container bg-[#6A994E] m-5 p-20 rounded-3xl ease-in-out duration-200 hover:scale-105 hover:shadow-xl active:scale-95">Table Rankings</a>
+        <a href="{{ path('app_rankings_category_selection')}}" class="link-container bg-[#6A994E] m-5 p-20 rounded-3xl ease-in-out duration-200 hover:scale-105 hover:shadow-xl active:scale-95">Category Rankings</a>
+    </section>
 {% endblock %}

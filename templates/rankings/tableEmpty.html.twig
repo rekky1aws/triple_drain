@@ -1,0 +1,8 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} {{controller_name}} {% endblock %}
+
+{% block body %}
+    <h2>No Data for this table. </h2>
+    <p> This table exists but the scores are still on their way. Please go back to <a href="{{ path('app_rankings_table_selection') }}">table selection</a> to choose another table.</p>
+{% endblock %}

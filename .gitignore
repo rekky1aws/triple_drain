@@ -24,6 +24,10 @@
 /assets/vendor/
 ###< symfony/asset-mapper ###
 
-###> resources used by devs
+###> resources used by devs ###
 _resources
+###< resources used by devs
 
+###> csv imports ###
+/public/uploads/csvImports
+###< csv imports ###
