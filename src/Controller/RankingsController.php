@@ -4,7 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Category;
 use App\Entity\Pinball;
-
+use App\Entity\Score;
 use Doctrine\ORM\EntityManagerInterface;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -43,7 +43,8 @@ class RankingsController extends AbstractController
     #[Route('/rankings/catgeory/{id}', name: 'app_rankings_category')]
     public function category(EntityManagerInterface $entityManager, int $id): Response
     {
-        $categories = $entityManager->getRepository(Category::class)->find($id);
+        // TODO : Dispaly rankings by category
+        $category = $entityManager->getRepository(Category::class)->find($id);
         
         return $this->render('rankings/category.html.twig', [
             'controller_name' => 'Category',
@@ -71,7 +72,10 @@ class RankingsController extends AbstractController
     public function tableId(EntityManagerInterface $entityManager, int $id): Response
     {
         $pinball_machine = $entityManager->getRepository(Pinball::class)->find($id);
-        $scores = $pinball_machine->getScores();
+        $scores = $entityManager->getRepository(Score::class)->findBy(
+            ["pinball" => $pinball_machine],
+            ["position" => "ASC"]
+        );
 
         if (is_null($pinball_machine)) { // If table doesn't exist display error.
             return $this->render('rankings/tableError.html.twig', [

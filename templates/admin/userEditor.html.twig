@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Triple Drain - Admin - User Editor{% endblock %}
+
+{% block body %}
+{# 
+Form to edit a given user
+Get all possible roles and make a menu to add or delete roles to an existing user.
+#}
+
+<p> Username : <span> {{user.username}} </span></p>
+<p>User ID :  <span> {{user.id}} </span></p>
+<p> Roles :
+  <ul>
+  {% for role in user.roles %}
+    <li>
+      <input type="checkbox" name="{{role}}" id="{{role}}">
+      <label for="{{role}}">{{role}}</label>
+    </li>
+  {% endfor %}
+  </ul>
+</p>
+
+{% endblock %}

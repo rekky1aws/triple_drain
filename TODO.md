@@ -1,6 +1,20 @@
 # TODO
 
-## Main templates
+## Pending (Next Steps)
+ + Get CSV Insertion to work
+   + Fix memory leak
+      + Check if clearing entityManager works
+ + ScoreManager 
+   + method to get sum of all points for a player
+      + TOP50
+      + TOP100
+   + method to get all TOP50 scores
+   + method to get all TOP100 scores
+ + Display the summed scores
+
+## Global
+
+### Main templates
  + Main elements
    + Footer
       + Useful Links
@@ -10,8 +24,11 @@
       + Logo
       + Language Switcher
 
+### Flash messages
+
+### Other
  + Pages
-   + Main 
+   + Main
       + Better style
       + Images
       + Animations
@@ -31,8 +48,8 @@
          + Style
    + Rankings
       + Global
-         + Controller
-         + View
+         + _Controller
+         + _View
       + Category
          + Controller
          + View
@@ -46,7 +63,34 @@
       + Page to insert table scores via CSV
 
  + Database
+   + Securise Entity with Roles
    + Functions
-      + Insert table scores via CSV
       + Calculate TOP 50 points
       + Calculate TOP 100 points
+      + CSV
+         + Read CSV to update scores
+            + Add the possibility to read a choosen CSV to revert changes if there is an error
+         + Soft delete in Entity and data base ('usable' field, default to true but can be falsed by admins)
+
+ + Admin
+   + CSV soft deleting (bool $usable)
+   + User Manager
+      + _View
+         + Style
+   + User Editor
+      + _Controller
+      + _View
+
+ + Edit
+   + _View
+      + Style
+   + CSV Insertion
+      + Hide imported_by user and choose automatically the current user
+      + Make filename automatic and not editable by user (but still show it).
+   + CSV List
+      + Enhancing : better presentation and more informations
+      + Display if CSV file is `usable` or not next to it's name.
+   + CSV View
+      + Display if CSV file is `usable` or `unusable` (soft delete)
+      + Buttons
+         + Apply CSV data (if `usable`)
