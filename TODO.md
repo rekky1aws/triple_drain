@@ -1,9 +1,6 @@
 # TODO
 
 ## Pending (Next Steps)
- + Get CSV Insertion to work
-   + Fix memory leak
-      + Check if clearing entityManager works
  + ScoreManager 
    + method to get sum of all points for a player
       + TOP50
@@ -11,6 +8,8 @@
    + method to get all TOP50 scores
    + method to get all TOP100 scores
  + Display the summed scores
+
+ + Remove language support to only have english
 
 ## Global
 
@@ -23,15 +22,22 @@
       + Nav
       + Logo
       + Language Switcher
+      + LogIn / Register buttons when not connected
+      + User Account Manager button when connected
+      + Show Admin & Editor dashboard depending on the user roles
 
 ### Flash messages
 
 ### Other
+
  + Pages
    + Main
       + Better style
       + Images
       + Animations
+   + User account management
+      + Change Password
+      + Change Mail
    + Teams
       + Team Selection
          + Add search bar
@@ -51,8 +57,8 @@
          + _Controller
          + _View
       + Category
-         + Controller
-         + View
+         + _Controller
+         + _View
       + Table
          + TableError
             + Style
@@ -63,7 +69,9 @@
       + Page to insert table scores via CSV
 
  + Database
-   + Securise Entity with Roles
+   + User
+      + 
+   + Securise Entity with Roles 
    + Functions
       + Calculate TOP 50 points
       + Calculate TOP 100 points
@@ -87,10 +95,8 @@
    + CSV Insertion
       + Hide imported_by user and choose automatically the current user
       + Make filename automatic and not editable by user (but still show it).
+      + Fix memory leak
+         + Check if clearing entityManager works
    + CSV List
       + Enhancing : better presentation and more informations
-      + Display if CSV file is `usable` or not next to it's name.
-   + CSV View
-      + Display if CSV file is `usable` or `unusable` (soft delete)
-      + Buttons
-         + Apply CSV data (if `usable`)
+      + Display if CSV file is `usable` or not next to 
