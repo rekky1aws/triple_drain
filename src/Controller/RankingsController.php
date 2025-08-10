@@ -51,7 +51,7 @@ class RankingsController extends AbstractController
         ]);
     }
 
-    #[Route('/rankings/table', name: 'app_rankings_table_selection')]
+    #[Route('/rankings/tables', name: 'app_rankings_table_selection')]
     public function tableSelection(EntityManagerInterface $entityManager): Response
     {
         $categories = $entityManager->getRepository(Category::class)->findAll();

@@ -38,6 +38,20 @@
    + User account management
       + Change Password
       + Change Mail
+   + Teams
+      + Team Selection
+         + Add search bar
+      + Team
+         + Team Rank (sum all players points)
+         + Name
+         + Points mode selector
+            + Reads GET parameter too
+         + Total score in ranking modes
+         + Player list 
+            + Rank in team
+            + Points
+      + TeamError
+         + Style
    + Rankings
       + Global
          + _Controller
@@ -45,6 +59,14 @@
       + Category
          + _Controller
          + _View
+      + Table
+         + TableError
+            + Style
+
+ + Subdomain
+   + Admin
+      + Login 
+      + Page to insert table scores via CSV
 
  + Database
    + User

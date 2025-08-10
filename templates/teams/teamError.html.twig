@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	{{controller_name}}
+{% endblock %}
+
+{% block body %}
+	<h2>This team does not exist
+	</h2>
+	<p>
+		There is no team with the id :{{team_id}}. Please go back to
+<a href="{{ path('app_team_selection') }}">team selection</a>
+
+		to choose an existing table.</p>
+{% endblock %}
+
