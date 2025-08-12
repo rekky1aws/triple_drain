@@ -62,6 +62,12 @@
       + Table
          + TableError
             + Style
+   + Players
+      + Search
+         + List similar results
+      + Page
+         + Infos
+         + Scores and positions
 
  + Subdomain
    + Admin
@@ -70,8 +76,8 @@
 
  + Database
    + User
-      + 
    + Securise Entity with Roles 
+      + 
    + Functions
       + Calculate TOP 50 points
       + Calculate TOP 100 points
